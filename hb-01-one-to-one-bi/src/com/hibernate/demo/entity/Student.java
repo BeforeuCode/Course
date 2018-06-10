@@ -8,36 +8,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "student")
+@Table(name="student")
 public class Student {
 
-	//Mapping
-	@Id // key
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name="id")
 	private int id;
 	
-	@Column(name = "first_name")
+	@Column(name="first_name")
 	private String firstName;
 	
-	@Column(name = "last_name")
+	@Column(name="last_name")
 	private String lastName;
 	
-	@Column(name = "email")
+	@Column(name="email")
 	private String email;
 	
-	//Constructor
 	public Student() {
-	
-	}
 		
-	public Student(String firstName, String lastName, String email) {
-			this.firstName = firstName;
-			this.lastName = lastName;
-			this.email = email;
-		}
+	}
 
-	//Getters and Setters
+	public Student(String firstName, String lastName, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -70,14 +67,13 @@ public class Student {
 		this.email = email;
 	}
 
-	//toString
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
-
-
-
-
-
+	
 }
+
+
+
+
