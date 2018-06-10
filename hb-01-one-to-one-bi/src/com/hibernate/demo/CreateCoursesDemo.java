@@ -1,14 +1,14 @@
 package com.hibernate.demo;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.hibernate.demo.entity.Course;
 import com.hibernate.demo.entity.Instructor;
 import com.hibernate.demo.entity.InstructorDetail;
 
-public class DeleteDemo {
+public class CreateCoursesDemo {
 
 	public static void main(String[] args) {
 
@@ -17,6 +17,7 @@ public class DeleteDemo {
 								.configure("hibernate.cfg.xml")
 								.addAnnotatedClass(Instructor.class)
 								.addAnnotatedClass(InstructorDetail.class)
+								.addAnnotatedClass(Course.class)
 								.buildSessionFactory();
 		
 		// create session
@@ -26,24 +27,22 @@ public class DeleteDemo {
 			
 			// start a transaction
 			session.beginTransaction();
-
-			// get instructor by primary key / id
+			
+			// get the instructor from db
 			int theId = 1;
-			Instructor tempInstructor = 
-					session.get(Instructor.class, theId);
+			Instructor tempInstructor = session.get(Instructor.class, theId);		
 			
-			System.out.println("Found instructor: " + tempInstructor);
+			// create some courses
+			Course tempCourse1 = new Course("Air Guitar - The Ultimate Guide");
+			Course tempCourse2 = new Course("The Pinball Masterclass");
 			
-			// delete the instructors
-			if (tempInstructor != null) {
+			// add courses to instructor
+			tempInstructor.add(tempCourse1);
+			tempInstructor.add(tempCourse2);
 			
-				System.out.println("Deleting: " + tempInstructor);
-				
-				// Note: will ALSO delete associated "details" object
-				// because of CascadeType.ALL
-				//
-				session.delete(tempInstructor);				
-			}
+			// save the courses
+			session.save(tempCourse1);
+			session.save(tempCourse2);
 			
 			// commit transaction
 			session.getTransaction().commit();
@@ -51,6 +50,10 @@ public class DeleteDemo {
 			System.out.println("Done!");
 		}
 		finally {
+			
+			// add clean up code
+			session.close();
+			
 			factory.close();
 		}
 	}

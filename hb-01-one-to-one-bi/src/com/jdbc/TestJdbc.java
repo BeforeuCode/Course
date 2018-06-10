@@ -7,7 +7,7 @@ public class TestJdbc {
 
 	public static void main(String[] args) {
 		
-		String jdbcUrl = "jdbc:mysql://localhost/hb-01-one-to-one-uni?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String jdbcUrl = "jdbc:mysql://localhost/hb-03-one-to-many?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String user = "hbstudent";
 		String pass = "hbstudent";
 				
