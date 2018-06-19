@@ -3,13 +3,15 @@ package com.jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import javax.swing.Spring;
+
 public class TestJdbc {
 
 	public static void main(String[] args) {
 		
-		String jdbcUrl = "jdbc:mysql://localhost/hb-04-one-to-many-uni?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-		String user = "hbstudent";
-		String pass = "hbstudent";
+		String user = "springstudent";
+		String jdbcUrl = "jdbc:mysql://localhost/web_customer_tracker?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String pass = "springstudent";
 				
 		
 		try {
@@ -17,7 +19,7 @@ public class TestJdbc {
 			//Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Conecting to DB: " + jdbcUrl);
 			
-			Connection myConnection = DriverManager.getConnection(jdbcUrl, user, pass);
+			Connection myConnection = (Connection)DriverManager.getConnection(jdbcUrl,user,pass);
 			
 			System.out.println("Connection successfull!");
 			
