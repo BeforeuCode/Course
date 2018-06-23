@@ -10,7 +10,7 @@ public class LuvAopExpressions {
 	public void forDaoPackage() {}
 	
 	// create pointcut for getter methods
-	@Pointcut("execution(* com..aopdemo.dao.*.get*(..))")
+	@Pointcut("execution(* com.aopdemo.dao.*.get*(..))")
 	public void getter() {}
 	
 	// create pointcut for setter methods
