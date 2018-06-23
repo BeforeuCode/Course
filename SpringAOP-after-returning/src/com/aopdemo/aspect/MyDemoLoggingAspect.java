@@ -37,7 +37,18 @@ private Logger myLogger = Logger.getLogger(getClass().getName());
 		long begin = System.currentTimeMillis();
 		
 		// now, let's execute the method
-		Object result = theProceedingJoinPoint.proceed();
+		Object result = null;
+		
+		try {
+			result = theProceedingJoinPoint.proceed();
+		} catch (Exception e) {
+			//log the exception
+			myLogger.warning(e.getMessage());
+			
+			
+			//give the user custom message 
+			result = "Major accident! But no worries";
+		}
 		
 		// get end timestamp
 		long end = System.currentTimeMillis();
