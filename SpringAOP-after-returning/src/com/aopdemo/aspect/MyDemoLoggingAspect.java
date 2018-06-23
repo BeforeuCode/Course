@@ -1,6 +1,7 @@
 package com.aopdemo.aspect;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -22,13 +23,15 @@ import com.aopdemo.Account;
 public class MyDemoLoggingAspect {
 	
 	
+private Logger myLogger = Logger.getLogger(getClass().getName());
+	
 	@Around("execution(* com.aopdemo.service.*.getFortune(..))")	
 	public Object aroundGetFortune(
 			ProceedingJoinPoint theProceedingJoinPoint) throws Throwable {
 		
 		// print out method we are advising on
 		String method = theProceedingJoinPoint.getSignature().toShortString();
-		System.out.println("\n=====>>> Executing @Around on method: " + method);
+		myLogger.info("\n=====>>> Executing @Around on method: " + method);
 		
 		// get begin timestamp
 		long begin = System.currentTimeMillis();
@@ -41,7 +44,7 @@ public class MyDemoLoggingAspect {
 		
 		// compute duration and display it
 		long duration = end - begin;
-		System.out.println("\n=====> Duration: " + duration / 1000.0 + " seconds");
+		myLogger.info("\n=====> Duration: " + duration / 1000.0 + " seconds");
 		
 		return result;
 	}
