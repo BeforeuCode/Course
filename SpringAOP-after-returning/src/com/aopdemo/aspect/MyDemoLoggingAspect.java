@@ -47,7 +47,11 @@ private Logger myLogger = Logger.getLogger(getClass().getName());
 			
 			
 			//give the user custom message 
-			result = "Major accident! But no worries";
+			
+			//result = "Major accident! But no worries";
+			
+			//rethrowing the exceptions
+			throw e;
 		}
 		
 		// get end timestamp
